@@ -13,12 +13,14 @@ async function main() {
   const balance=await deployer.getBalance();
   console.log(`Deployer balance${balance}`);
 
-  const Lock = await hh.ethers.getContractFactory("Lock");
+  const BC = await hh.ethers.getContractFactory("BadgerCoin");
+  const bc = await BC.deploy();
+  console.log(`BC total supply ${(await bc.totalSupply()).toBigInt()} deployed to ${(await bc.owner()).toString()} balance ${(await bc.balanceOf(bc.owner())).toBigInt()}`);
   //const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
 
   //await lock.deployed();
 
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
+  //console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

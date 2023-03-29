@@ -2,3 +2,5 @@ node_modules
 cache
 artifacts-dbg
 contracts-dbg
+typechain-types
+artifacts
