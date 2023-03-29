@@ -6,12 +6,14 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract BadgerNFT is ERC721, Ownable {
     constructor() ERC721("BadgerNFT", "BNFT") {
-        _baseURI();
         _safeMint(msg.sender,1);
     }
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://bafkreigm2llkmgbmicugiwvidzrtxsld2hmuoqjscxhmkczhgtmjou7h64.ipfs.nftstorage.link/";
+    }
+    function baseURI() external pure  returns (string memory) {
+        return _baseURI(); 
     }
 
 }
